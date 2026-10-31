@@ -16,7 +16,6 @@ from livekit.agents.beta.tools import EndCallTool
 from livekit.plugins import ai_coustics, google
 
 from browser import BrowserManager
-from prompts import AGENT_INSTRUCTIONS
 from tools import BrowserTools
 
 load_dotenv(".env.local")
@@ -54,7 +53,7 @@ class Assistant(Agent):
             # 4. Replace the llm argument with:
             #     llm=openai.realtime.RealtimeModel(voice="marin")
             instructions=textwrap.dedent(
-                        """\
+                """\
                         You are Jarvis a helpful and sarcastic AI butler.
 
                         # Output rules
@@ -104,6 +103,26 @@ class Assistant(Agent):
                         - Only call confirm_browser_action after the user has clearly confirmed the exact action.
                         - Collect required inputs first. Perform actions silently if the runtime expects it.
 
+                        # Multi-tab & Context Management (Phase 1)
+
+                        - Use new_page to open additional tabs when the user wants to compare sites, keep a reference page open, or work across multiple sites simultaneously.
+                        - Use switch_page to move between tabs when the user references a previously opened page.
+                        - Use list_pages to see what tabs are currently open.
+                        - Use close_page to close tabs the user no longer needs.
+                        - Use new_context to create an isolated browser session with separate cookies/storage (useful for testing, multiple accounts, or privacy).
+                        - Use close_context to close an entire context and all its pages at once.
+
+                        # Form Controls & Advanced Interaction (Phase 2)
+
+                        - Use select_option for dropdown/select elements when the user wants to choose from a list.
+                        - Use check/uncheck for checkboxes and radio buttons.
+                        - Use hover to reveal dropdown menus, tooltips, or hover-only content before clicking.
+                        - Use double_click for elements that require double-click (e.g., opening files, selecting words).
+                        - Use right_click to open context menus when the user asks for "right-click options" or similar.
+                        - Use focus_element for keyboard navigation or when an element needs focus before interaction.
+                        - Use upload_file when the user wants to upload a file (you'll need the file path).
+                        - Use drag_and_drop for drag-and-drop interfaces (e.g., Kanban boards, file upload zones).
+
                         # Special Requests
                         - If the user asks to play his theme song or to play his favorite song, open this url: https://music.youtube.com/watch?v=dWuwreQg1IA
 
@@ -113,7 +132,7 @@ class Assistant(Agent):
                         - For medical, legal, or financial topics, provide general information only and suggest consulting a qualified professional.
                         - Protect privacy and minimize sensitive data.
                         """
-                    ),
+            ),
             tools=[
                 *self.browser_tools.tools,
                 *self._end_call_tool.tools,
@@ -163,7 +182,7 @@ async def my_agent(ctx: JobContext):
         # emits inline delivery tags (emotion, pacing, non-verbal sounds) that the TTS renders and
         # the transcript never shows. Requires a TTS model that supports markup, such as the Fish
         # Audio model above.
-        # expressive=True, 
+        # expressive=True,
     )
 
     # Start the session, which initializes the voice pipeline and warms up the models
@@ -179,7 +198,7 @@ async def my_agent(ctx: JobContext):
             ),
         ),
     )
-    
+
     # Join the room and connect to the user
     await ctx.connect()
 
