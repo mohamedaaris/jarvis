@@ -1,0 +1,25 @@
+- generic [active] [ref=f3e1]:
+  - banner [ref=f3e2]:
+    - link [ref=f3e3] [cursor=pointer]:
+      - /url: https://livekit.io
+      - img "LiveKit Logo" [ref=f3e4]
+    - generic [ref=f3e5]:
+      - text: Built with
+      - link "LiveKit Agents" [ref=f3e6] [cursor=pointer]:
+        - /url: https://docs.livekit.io/agents
+  - main [ref=f3e7]:
+    - generic [ref=f3e8]:
+      - generic [ref=f3e9]:
+        - paragraph [ref=f3e12]: Chat live with your voice AI agent
+        - button "Start call" [ref=f3e13]
+      - paragraph [ref=f3e15]:
+        - text: Need help getting set up? Check out the
+        - link "Voice AI quickstart" [ref=f3e16] [cursor=pointer]:
+          - /url: https://docs.livekit.io/agents/start/voice-ai/
+        - text: .
+  - region "Notifications alt+T"
+  - generic [ref=f3e18]:
+    - generic [ref=f3e19]: Color scheme toggle
+    - button "Enable dark color scheme" [ref=f3e20] [cursor=pointer]
+    - button "Enable light color scheme" [ref=f3e24] [cursor=pointer]
+    - button "Enable system color scheme" [ref=f3e28] [cursor=pointer]

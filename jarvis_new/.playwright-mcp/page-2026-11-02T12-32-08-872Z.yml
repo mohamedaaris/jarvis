@@ -1,0 +1,38 @@
+- generic [ref=f3e1]:
+  - banner [ref=f3e2]:
+    - link [ref=f3e3] [cursor=pointer]:
+      - /url: https://livekit.io
+      - img "LiveKit Logo" [ref=f3e4]
+    - generic [ref=f3e5]:
+      - text: Built with
+      - link "LiveKit Agents" [ref=f3e6] [cursor=pointer]:
+        - /url: https://docs.livekit.io/agents
+  - main [ref=f3e7]:
+    - generic [ref=f3e8]:
+      - generic [ref=f3e9]:
+        - paragraph [ref=f3e12]: Chat live with your voice AI agent
+        - button "Start call" [active] [ref=f3e13]
+        - alert [ref=f3e32]: This page is not a secure context, so the browser hides the microphone. Open the app at http://localhost:3000 instead of http://192.168.1.5:3000, or serve it over HTTPS.
+      - paragraph [ref=f3e15]:
+        - text: Need help getting set up? Check out the
+        - link "Voice AI quickstart" [ref=f3e16] [cursor=pointer]:
+          - /url: https://docs.livekit.io/agents/start/voice-ai/
+        - text: .
+  - region "Notifications alt+T"
+  - generic [ref=f3e18]:
+    - generic [ref=f3e19]: Color scheme toggle
+    - button "Enable dark color scheme" [ref=f3e20] [cursor=pointer]
+    - button "Enable light color scheme" [ref=f3e24] [cursor=pointer]
+    - button "Enable system color scheme" [ref=f3e28] [cursor=pointer]
+  - generic [ref=f3e37] [cursor=pointer]:
+    - button "Open Next.js Dev Tools" [ref=f3e38]
+    - generic [ref=f3e42]:
+      - button "Open issues overlay" [ref=f3e43]:
+        - generic [ref=f3e52]:
+          - generic [aria-hidden] [ref=f3e53]: "1"
+          - generic [ref=f3e54]: "2"
+        - generic [ref=f3e47]:
+          - text: Issue
+          - generic [aria-hidden] [ref=f3e55]: s
+      - button "Collapse issues badge" [ref=f3e48]
+  - alert [ref=f3e51]
